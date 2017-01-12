@@ -9,20 +9,17 @@
 import UIKit
 
 var places = [Dictionary<String,String>()]
+    var activePlace = -1
 class PlacesViewController: UITableViewController {
     
-    var activeRow = 0
+
 
     @IBOutlet var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if places.count == 1 && places[0].count == 0 {
-            places.remove(at: 0)
-            places.append(["name": "Taj Mahal","lat": "27.175277" , "lon": "78.041218"])
-        }
-        table.reloadData()
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,6 +27,15 @@ class PlacesViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if places.count == 1 && places[0].count == 0 {
+            places.remove(at: 0)
+            places.append(["name": "Taj Mahal","lat": "27.175277" , "lon": "78.042218"])
+        }
+        activePlace = -1
+        table.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +68,7 @@ class PlacesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        activeRow = indexPath.row
+        activePlace = indexPath.row
         performSegue(withIdentifier: "toMap", sender: nil)
     }
 
@@ -100,7 +106,7 @@ class PlacesViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toMap" {
             let destinationVC = segue.destination as! ViewController
-            destinationVC.place = activeRow ;
+            destinationVC.place = activePlace ;
         }
         // Pass the selected object to the new view controller.
     }

@@ -74,11 +74,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MQR-zg-6ve">
+                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JaH-NN-CiW"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MQR-zg-6ve" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="2uJ-fO-d7q"/>
+                            <constraint firstAttribute="trailing" secondItem="MQR-zg-6ve" secondAttribute="trailing" id="JJn-es-GqB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MQR-zg-6ve" secondAttribute="bottom" id="a47-Bu-6EY"/>
+                            <constraint firstItem="MQR-zg-6ve" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uAb-pd-hld"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="MQR-zg-6ve" id="fgu-1Z-DcX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.75" y="67.605633802816897"/>
         </scene>
     </scenes>
 </document>
